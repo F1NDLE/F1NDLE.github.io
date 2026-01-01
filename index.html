@@ -14,7 +14,17 @@
             overflow-x: hidden;
             position: relative;
         }
-        header { text-align: center; padding: 60px 20px; }
+        header { 
+            text-align: center; 
+            padding: 60px 20px; 
+            transition: transform 0.6s ease, opacity 0.6s ease;
+            position: relative;
+            z-index: 10;
+        }
+        header.scrolled {
+            transform: translateY(-100px);
+            opacity: 0;
+        }
         h1 { font-size: 5em; background: linear-gradient(to right, #a855f7, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         p { font-size: 1.4em; color: #bbb; max-width: 800px; margin: 20px auto; }
         .sections { 
@@ -46,22 +56,45 @@
         li:before { content: "⚡"; position: absolute; left: 0; color: #a855f7; font-size: 1.3em; }
         a { color: #60a5fa; text-decoration: none; }
         a:hover { text-decoration: underline; }
+
+        .terminal-container {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .terminal-container.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
         .terminal { background: rgba(20,20,40,0.9); border: 1px solid #6b21b3; border-radius: 20px; padding: 30px; margin: 60px auto; max-width: 1000px; font-family: monospace; backdrop-filter: blur(10px); }
         .terminal-header { background: linear-gradient(to right, #6b21b3, #3b82f6); height: 40px; border-radius: 20px 20px 0 0; margin: -30px -30px 30px; display: flex; align-items: center; padding-left: 20px; }
         .dot { width: 14px; height: 14px; border-radius: 50%; margin-right: 10px; }
         .red { background: #ff5f56; }
         .yellow { background: #ffbd2e; }
         .green { background: #27c93f; }
-        footer { text-align: center; padding: 60px 20px; border-top: 1px solid #6b21b3; color: #999; }
 
-        /* Снежинки */
+        footer { 
+            text-align: center; 
+            padding: 60px 20px; 
+            border-top: 1px solid #6b21b3; 
+            color: #999; 
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        footer.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         .snowflake {
             position: absolute;
-            top: -10px;
+            top: -20px;
             color: #fff;
             font-size: 1.5em;
             pointer-events: none;
             animation: fall linear infinite;
+            opacity: 0.8;
         }
         @keyframes fall {
             to { transform: translateY(100vh); }
@@ -69,7 +102,7 @@
     </style>
 </head>
 <body>
-    <header>
+    <header id="header">
         <h1>F1NDLE</h1>
         <p>14-year-old developer & tech enthusiast exploring the boundaries of mobile systems and game development</p>
     </header>
@@ -82,8 +115,8 @@
                 <li>POCO X4 GT (vendor boot customized)</li>
                 <li>Redmi Note 12S (rooted)</li>
                 <li>Pixel 7 Pro (rooted)</li>
-                <li>iPhone 13 (pink edition, признаюсь честно, он мне нравится)</li>
-                <li>iPhone 15 (brbrbr batapim)</li>
+                <li>iPhone 13 (pink edition)</li>
+                <li>iPhone 15 (latest setup)</li>
             </ul>
         </div>
 
@@ -136,22 +169,24 @@
         </div>
     </div>
 
-    <div class="terminal">
-        <div class="terminal-header">
-            <div class="dot red"></div>
-            <div class="dot yellow"></div>
-            <div class="dot green"></div>
+    <div class="terminal-container" id="terminal">
+        <div class="terminal">
+            <div class="terminal-header">
+                <div class="dot red"></div>
+                <div class="dot yellow"></div>
+                <div class="dot green"></div>
+            </div>
+            <p style="color:#a855f7;">user@f1ndle-system:~$ echo "System Status"</p>
+            <p style="color:#4ade80;">Active Systems:</p>
+            <p style="color:#60a5fa; margin-left:20px;">├── Mobile: HyperOS (POCO), EvolutionX (Pixel), iOS (iPhones)</p>
+            <p style="color:#60a5fa; margin-left:20px;">├── Desktop: Arch Linux (Kernel 6.10)</p>
+            <p style="color:#60a5fa; margin-left:20px;">└── Development: Python, Bash, Magisk Modules</p>
+            <p style="color:#fbbf24; margin-top:15px;">// All systems operational at 98% efficiency //</p>
+            <p style="color:#67e8f9;">// Credits loaded: Magisk, KernelSU, APatch, MALW.link //</p>
         </div>
-        <p style="color:#a855f7;">user@f1ndle-system:~$ echo "System Status"</p>
-        <p style="color:#4ade80;">Active Systems:</p>
-        <p style="color:#60a5fa; margin-left:20px;">├── Mobile: HyperOS (POCO), EvolutionX (Pixel), iOS (iPhones)</p>
-        <p style="color:#60a5fa; margin-left:20px;">├── Desktop: Arch Linux (Kernel 6.10)</p>
-        <p style="color:#60a5fa; margin-left:20px;">└── Development: Python, Bash, Magisk Modules</p>
-        <p style="color:#fbbf24; margin-top:15px;">// All systems operational at 98% efficiency //</p>
-        <p style="color:#67e8f9;">// Credits loaded: Magisk, KernelSU, APatch, MALW.link //</p>
     </div>
 
-    <footer>
+    <footer id="footer">
         <p>Crafted with ♥ in Arch Linux • System Uptime: 14 years</p>
         <p style="margin-top:30px;">
             <a href="https://github.com/F1NDLE" target="_blank" style="margin:0 20px; padding:12px 30px; background:rgba(107,33,179,0.5); border:1px solid #a855f7; border-radius:12px; font-size:1.1em;">GitHub</a>
@@ -159,24 +194,45 @@
         </p>
     </footer>
 
-    <!-- Снежинки -->
     <script>
         function createSnowflake() {
             const snowflake = document.createElement('div');
             snowflake.classList.add('snowflake');
             snowflake.innerText = ['❄', '❅', '❆'][Math.floor(Math.random() * 3)];
             snowflake.style.left = Math.random() * 100 + 'vw';
-            snowflake.style.animationDuration = Math.random() * 5 + 10 + 's';
-            snowflake.style.opacity = Math.random() * 0.5 + 0.5;
-            snowflake.style.fontSize = Math.random() * 1 + 1 + 'em';
+            snowflake.style.animationDuration = Math.random() * 10 + 15 + 's';
+            snowflake.style.opacity = Math.random() * 0.4 + 0.4;
+            snowflake.style.fontSize = Math.random() * 0.8 + 1 + 'em';
             document.body.appendChild(snowflake);
 
-            setTimeout(() => {
-                snowflake.remove();
-            }, 15000);
+            setTimeout(() => snowflake.remove(), 25000);
         }
 
-        setInterval(createSnowflake, 300);
+        setInterval(createSnowflake, 600);
+    </script>
+
+    <script>
+        const header = document.getElementById('header');
+        const terminal = document.getElementById('terminal');
+        const footerEl = document.getElementById('footer');
+
+        window.addEventListener('scroll', () => {
+            const scrollPos = window.scrollY;
+
+            if (scrollPos > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+
+            if (scrollPos > 300) {
+                terminal.classList.add('visible');
+                footerEl.classList.add('visible');
+            } else {
+                terminal.classList.remove('visible');
+                footerEl.classList.remove('visible');
+            }
+        });
     </script>
 </body>
 </html>
