@@ -43,8 +43,14 @@
             border-radius: 20px; 
             padding: 30px; 
             box-shadow: 0 8px 30px rgba(0,0,0,0.6); 
-            transition: transform 0.4s ease, box-shadow 0.4s ease; 
+            transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.8s ease, transform 0.8s ease; 
             backdrop-filter: blur(10px);
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        .card.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         .card:hover { 
             transform: translateY(-15px); 
@@ -107,7 +113,7 @@
         <p>14-year-old developer & tech enthusiast exploring the boundaries of mobile systems and game development</p>
     </header>
 
-    <div class="sections">
+    <div class="sections" id="sections">
         <div class="card">
             <h2>Devices</h2>
             <ul>
@@ -213,6 +219,7 @@
 
     <script>
         const header = document.getElementById('header');
+        const cards = document.querySelectorAll('.card');
         const terminal = document.getElementById('terminal');
         const footerEl = document.getElementById('footer');
 
@@ -224,6 +231,14 @@
             } else {
                 header.classList.remove('scrolled');
             }
+
+            cards.forEach(card => {
+                if (card.getBoundingClientRect().top < window.innerHeight - 100) {
+                    card.classList.add('visible');
+                } else {
+                    card.classList.remove('visible');
+                }
+            });
 
             if (scrollPos > 300) {
                 terminal.classList.add('visible');
