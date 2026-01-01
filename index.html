@@ -17,7 +17,18 @@
         p { font-size: 1.2em; color: #bbb; }
         .sections { display: grid; grid-template-columns: 1fr; max-width: 800px; margin: 0 auto; gap: 20px; padding: 20px; }
         @media (min-width: 768px) { .sections { grid-template-columns: 1fr 1fr; } }
-        .card { background: rgba(30, 30, 50, 0.7); border: 1px solid #6b21b3; border-radius: 16px; padding: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
+        .card { 
+            background: rgba(30, 30, 50, 0.7); 
+            border: 1px solid #6b21b3; 
+            border-radius: 16px; 
+            padding: 20px; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+        }
+        .card:hover { 
+            transform: translateY(-10px); 
+            box-shadow: 0 12px 30px rgba(107, 33, 179, 0.6); 
+        }
         .card h2 { font-size: 1.8em; background: linear-gradient(to right, #a855f7, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 15px; }
         ul { list-style: none; padding: 0; }
         li { padding: 8px 0 8px 30px; position: relative; }
