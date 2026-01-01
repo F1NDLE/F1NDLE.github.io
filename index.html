@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -31,20 +30,22 @@
         p { font-size: 1.4em; color: #bbb; max-width: 800px; margin: 20px auto; }
         .sections { 
             display: grid; 
-            grid-template-columns: repeat(2, 1fr); 
-            max-width: 850px; 
+            grid-template-columns: 1fr; 
+            max-width: 1200px; 
             margin: 0 auto; 
-            gap: 14px; 
-            padding: 16px; 
+            gap: 30px; 
+            padding: 40px 20px; 
         }
+        @media (min-width: 768px) { .sections { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1024px) { .sections { grid-template-columns: repeat(3, 1fr); } }
         .card { 
-            background: rgba(30, 30, 50, 0.85); 
+            background: rgba(30, 30, 50, 0.8); 
             border: 1px solid #6b21b3; 
-            border-radius: 14px; 
-            padding: 14px; 
-            box-shadow: 0 6px 20px rgba(0,0,0,0.6); 
+            border-radius: 20px; 
+            padding: 30px; 
+            box-shadow: 0 8px 30px rgba(0,0,0,0.6); 
             transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.8s ease, transform 0.8s ease; 
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(10px);
             opacity: 0;
             transform: translateY(50px);
         }
@@ -53,13 +54,13 @@
             transform: translateY(0);
         }
         .card:hover { 
-            transform: translateY(-12px); 
-            box-shadow: 0 16px 32px rgba(107, 33, 179, 0.7); 
+            transform: translateY(-15px); 
+            box-shadow: 0 20px 40px rgba(107, 33, 179, 0.7); 
         }
-        .card h2 { font-size: 1.5em; background: linear-gradient(to right, #a855f7, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px; font-family: 'Orbitron', sans-serif; }
-        ul { list-style: none; padding: 0; margin: 0; }
-        li { padding: 5px 0 5px 30px; position: relative; font-size: 0.9em; line-height: 1.3; }
-        li:before { content: "⚡"; position: absolute; left: 0; color: #ffd700; font-size: 1.1em; }
+        .card h2 { font-size: 2em; background: linear-gradient(to right, #a855f7, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px; font-family: 'Orbitron', sans-serif; }
+        ul { list-style: none; padding: 0; }
+        li { padding: 12px 0 12px 40px; position: relative; font-size: 1.1em; }
+        li:before { content: "⚡"; position: absolute; left: 0; color: #a855f7; font-size: 1.3em; }
         a { color: #60a5fa; text-decoration: none; }
         a:hover { text-decoration: underline; }
 
@@ -72,17 +73,16 @@
             opacity: 1;
             transform: translateY(0);
         }
-        .terminal { background: rgba(20,20,40,0.9); border: 1px solid #6b21b3; border-radius: 14px; padding: 18px; margin: 30px auto; max-width: 850px; font-family: 'JetBrains Mono', monospace; backdrop-filter: blur(8px); }
-        .terminal-header { background: linear-gradient(to right, #6b21b3, #3b82f6); height: 32px; border-radius: 14px 14px 0 0; margin: -18px -18px 18px; display: flex; align-items: center; padding-left: 14px; }
-        .dot { width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; }
+        .terminal { background: rgba(20,20,40,0.9); border: 1px solid #6b21b3; border-radius: 20px; padding: 30px; margin: 60px auto; max-width: 1000px; font-family: 'JetBrains Mono', monospace; backdrop-filter: blur(10px); }
+        .terminal-header { background: linear-gradient(to right, #6b21b3, #3b82f6); height: 40px; border-radius: 20px 20px 0 0; margin: -30px -30px 30px; display: flex; align-items: center; padding-left: 20px; }
+        .dot { width: 14px; height: 14px; border-radius: 50%; margin-right: 10px; }
         .red { background: #ff5f56; }
         .yellow { background: #ffbd2e; }
         .green { background: #27c93f; }
-        .terminal p { margin: 6px 0; font-size: 0.9em; }
 
         footer { 
             text-align: center; 
-            padding: 40px 20px; 
+            padding: 60px 20px; 
             border-top: 1px solid #6b21b3; 
             color: #999; 
             opacity: 0;
@@ -98,10 +98,10 @@
             position: absolute;
             top: -20px;
             color: #fff;
-            font-size: 1.4em;
+            font-size: 1.5em;
             pointer-events: none;
             animation: fall linear infinite;
-            opacity: 0.7;
+            opacity: 0.8;
         }
         @keyframes fall {
             to { transform: translateY(100vh); }
@@ -110,7 +110,7 @@
 </head>
 <body>
     <header id="header">
-        <h1>F1NDLE</h1>
+        <h1>F1NDLE, финдл</h1>
         <p>14-year-old developer & tech enthusiast exploring the boundaries of mobile systems and game development</p>
     </header>
 
@@ -122,8 +122,8 @@
                 <li>POCO X4 GT (vendor boot customized)</li>
                 <li>Redmi Note 12S (rooted)</li>
                 <li>Pixel 7 Pro (rooted)</li>
-                <li>iPhone 13 (pink edition, красивый кста)</li>
-                <li>iPhone 15 (хз)</li>
+                <li>iPhone 13 (pink edition, meow)</li>
+                <li>iPhone 15 (ня)</li>
             </ul>
         </div>
 
@@ -196,8 +196,8 @@
     <footer id="footer">
         <p>Crafted with ♥ in Arch Linux • System Uptime: 14 years</p>
         <p style="margin-top:30px;">
-            <a href="https://github.com/F1NDLE" target="_blank" style="margin:0 20px; padding:10px 28px; background:rgba(107,33,179,0.5); border:1px solid #a855f7; border-radius:10px; font-size:1em;">GitHub</a>
-            <a href="https://t.me/F1NDLE_cn" target="_blank" style="margin:0 20px; padding:10px 28px; background:rgba(107,33,179,0.5); border:1px solid #a855f7; border-radius:10px; font-size:1em;">Telegram</a>
+            <a href="https://github.com/F1NDLE" target="_blank" style="margin:0 20px; padding:12px 30px; background:rgba(107,33,179,0.5); border:1px solid #a855f7; border-radius:12px; font-size:1.1em;">GitHub</a>
+            <a href="https://t.me/F1NDLE_cn" target="_blank" style="margin:0 20px; padding:12px 30px; background:rgba(107,33,179,0.5); border:1px solid #a855f7; border-radius:12px; font-size:1.1em;">Telegram</a>
         </p>
     </footer>
 
