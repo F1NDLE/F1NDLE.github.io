@@ -1,3 +1,3 @@
-# F1NDLE.github.io
+# website
 
 # WEBSITE SOON WAS SLOSED!
